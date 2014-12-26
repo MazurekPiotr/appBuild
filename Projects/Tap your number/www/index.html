@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+        <link rel="stylesheet" type="text/css" href="css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Teller</title>
+    </head>
+    <body>
+        <a href="html/tap_amount.html"><div id="tap_amount">Tap:<h1 id="getal1"></h1> as fast as possible</div></a>
+        <a href="html/tap_seconds.html"><div id="tap_seconds">Tap as many in: <h1 id="getal2"></h1>s</div></a>
+        <a href=""><div id="random_place"></div></a>
+        <a href=""><div id="memorizer"></div></a>
+        <div class="set">
+        <input type="text" id="number">
+        <input type="button" id="set" value="Set"></div>
+        <script type="text/javascript">
+        window.onload = function() {
+        	var number = document.getElementById('number');
+        	var set = document.getElementById('set');
+        	var getal1 = document.getElementById('getal1');
+        	var getal2 = document.getElementById('getal2');
+        	var tap_seconds = document.getElementById('tap_seconds');
+        	var tap_amount = document.getElementById('tap_amount');
+        	var numberSet = localStorage.getItem("number");
+        	set.onclick = function(){
+        		localStorage.removeItem("number");
+        		localStorage.setItem("number", number.value);	
+        		var numberSet = localStorage.getItem("number");
+        		console.log(numberSet);
+        		location.reload();
+        	}
+        	getal1.innerHTML = numberSet;
+        	getal2.innerHTML = numberSet;
+        	tap_seconds.onclick = function(){
+        		localStorage.setItem("type", "tap_seconds");
+        	}
+        	tap_amount.onclick = function(){
+        		localStorage.setItem("type", "tap_amount");
+        	}
+
+        };
+        </script>
+    </body>
+</html>
